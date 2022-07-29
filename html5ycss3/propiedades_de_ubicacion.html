@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ /* * es el selector universal, se usa para resetear los estilos por defecto como el margin y padding */
+            margin: 0;
+            padding: 0;
+            list-style: none; /*quita el estilo por defecto de las listas*/
+        }
+
+        /*antes de centrar el header, debemos asignar un position, este tiene 3 valores, el valor usado
+        para las cajas principales es relative, luego con la propiedad margin:auto queda centrado.
+        Cuando la position es relative, margin toma 2 parámatros top y left, si le asignamos por ejemplo: 
+        margin: 0 0; el header quedará pegado a la izquierda*/
+
+        /*
+            margin: top right bottom left;
+            si tiene 2 parámetros
+            margin: vertical horizontal;
+            margin: 20px auto; 
+                quiere decir que arriba y abajo va a tener un margen de 20px 
+                y con auto se centra en el eje horizontal
+            margin: 20px; significa que va a tener ese mismo valor alrededor de la caja
+            margin: 0px 0px 0px 20px; da un margen de 20px solo a la parte izquierda
+            margin-left: 20px; lo mismo que lo anterior
+        */
+        header{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 120px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #555; /* escala de grises */
+        }
+
+        nav{
+            position: relative;
+            margin: auto;
+            width: 1000px;
+            height: 48px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #aaa; /* escala de grises */
+        }
+
+        #top{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 192px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #888; /* escala de grises */
+        }
+
+        section{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 453px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #888; /* escala de grises */
+        }
+
+        footer{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 70px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #888; /* escala de grises */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo"></div>
+
+        <div id="icono1"></div>
+        <div id="icono2"></div>
+        <div id="icono3"></div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="botones"></li>
+            <li class="botones"></li>
+            <li class="botones"></li>
+            <li class="botones"></li>
+            <li class="botones"></li>
+        </ul>
+    </nav>
+
+    <div id="top">
+        <ul>
+            <li></li>
+
+            <li></li>
+
+            <li></li>
+        </ul>
+    </div>
+
+    <section>
+        <aside id="izq"></aside>
+        <article></article>
+        <aside id="der"></aside>
+    </section>
+
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker</title>
+</head>
+<body>
+    <p>Qué es un contenedor</p>
+    <p>Un contenedor Linux es un conjunto de procesos y recursos aislados. Linux logra esto al usar namespaces, lo que permite a los procesos acceder solo a recursos del namespace, lo que permite tener un árbol de procesos completamente independiente del resto de los sistemas.</p>
+
+    <p>Qué es Docker</p>
+    <p>Docker es una de las herramientas que usa la idea de recursos aislados para crear un conjunto de herramientas que permite a las aplicaciones ser empaquetadas con todas las dependencias instaladas y ejecutarse donde sea.</p>
+
+    <p>Definición de container de Docker</p>
+    <p>Un container es una unidad standard de software que empaqueta código y todas sus dependencias de tal manera que la aplicación se ejecute rápidamente y de manera confiable de un entorno de computación a otro.</p>
+
+    <p>Docker te permite:</p>
+    <ul>
+        <li>
+            Eliminar diferencias entre distintos enviroments. Es decir, tus ambientes de desarrollo, staging y producción serán idénticos. No más: "en mi máquina funcionaba"
+        </li>
+        <li>
+            Asegura que el mismo entorno pueda ser deployeado donde sea que esté instalado Docker, sin importar el hardware o sistema operativo. "build once, run everywhere"
+        </li>
+        <li>
+            Construir un entorno reproducible con una huella pequeña (usualmente solo tu código fuente y un archivo especial llamado Dockerfile) que puedes compartir con otros. 
+        </li>
+        <li>
+            Declarar las dependencias de tu proyecto como un archivo YAML que puede ser usado para configurar todo lo que necesitas en un solo paso. (por ejemplo: app server, database, queues, workers, etc)
+        </li>
+        <li>
+            Crear un cluster escalable y confiable que puede correr tu proyecto sobre una flota de máquinas fisicamente heterogeneas, con unas cuantas lineas de bash (Docker swarn)
+        </li>
+        <li>
+            Containers no necesitan tener todo un OS dentro.
+        </li>
+        <li>
+            Dado que mayormente solo incluyen dependencias a nivel de la aplicación, son más ligeros y eficientes. Una máquina donde puedes correr 2 VMs, puedes correr decenas de Docker containers sin problema, lo que significa menos recursos = menor costo = menor mantenimiento.
+        </li>
+    </ul>
+
+    <p>Comparación con Vagrant</p>
+    <p>Si has usado VMs para configurar tu entorno de desarrollo probablemente usaste Vagrant para gestionar las VMs. Vagrant es un front-end para algunos famososos virtualization back-ends como VMWare o Virtualbox</p>
+    <p>Otra gran diferencia entre usar VM y Docker es que con Docker rara vez instalas todos los servicios (database, web server, key-value store) en el mismo contenedor, en lugar se dividen en containers separados que se comunican usando una virtual network creada por el mismo Docker. Esto es exactamente lo que sucede en el mundo real: usualmente todos los servicios necesitan correr un proyecto en nodos separados (a menos que sea un proyecto muy pequeño).</p>
+
+    <p>Docker engine</p>
+    <p>
+        Docker usa una arquitectura cliente/servidor. El servidor usa Docker engine para cachear imagenes, correr y administrar containers, manejar logs, etc.
+    </p>
+    <ul>
+        <li>
+            Un Dockerfile, es el código fuente.
+        </li>
+        <li>
+            Una imagen es el binario obtenido de compilar y construir el Dockerfile.
+        </li>
+        <li>
+            Un container es la instancia ejecutable de una imagen, un proceso.
+        </li>
+        <li>
+            Las imagenes con cacheadas y los containers son ejecutados por un Docker host (una máquina que está corriendo el Docker engine)
+        </li>
+        <li>
+            Las imagenes son almacenadas en un "registry", el cual es como un repositorio para package managers como apt, yum, pip o npm. Docker ofrece un public registry que todos pueden usar para almacenar imagenes, mientras estas se mantengan públicas (una imagen privada es permitida gratis).
+        </li>
+    </ul>
+
+    <p>Creando un Dockerfile</p>
+    <p>Dockerfiles siguen una sintaxis sencilla para indicar los pasos que se deben seguir para construir una imagen específica. Ejemplo:</p>
+    <span>
+        FROM ubuntu
+        RUN echo "My first Docker image"
+    </span>
+    <p>
+        FROM ubuntu: le dice a Docker que use la imagen más reciente de ubuntu como base. La imagen será recuperada del public registry.
+    </p>
+    <p>
+        RUN echo "My first Docker image": le dice a Docker que ejecute el comando echo dentro del container.
+    </p>
+    <p>
+        Ahora podemos construir una imagen usando este Dockerfile con: 
+    </p>
+    <span>
+        docker build .
+    </span>
+    <p>
+        build: le indica a Docker que construya una imagen.
+    </p>
+    <p>
+        . : le indica a Docker que busque en el directorio actual el archivo Dockerfile y que use el directorio actual como "contexto" para referencia de archivos y carpetas
+    </p>
+
+    <p>
+        Cualquier comando en el Dockerfile que pueda alterar el estado de la imagen (como RUN) produce una "intermediate image". Cada vez que se encuentre uno de estos comandos se creará una image que contenga el estado producido por todos los comandos previos.
+    </p>
+
+    <p>Si asumimos que tenemos el archivo test.txt y cambiamos nuestro Dockerfile por lo siguiente:</p>
+    <span>
+        FROM ubuntu
+        WORKDIR /tmp
+        COPY test.txt .
+        RUN cat test.txt
+    </span>
+    <p>Produciremos 4 intermediate images</p>
+    <p>
+        FROM: copia la image de ubuntu en una intermediate image
+    </p>
+    <p>
+        WORKDIR: cambia el directorio de trabajo al que se indica
+    </p>
+    <p>
+        COPY: copia el archivo indicado en el directorio de trabajo
+    </p>
+    <p>
+        RUN: ejecuta un comando arbitrario
+    </p>
+
+    <p>Al construir la imagen por primera vez, el comando cat test.txt se ejecutará y mostrará el contenido del archivo</p>
+
+    <p>Ejecutando un container</p>
+    <p>
+        Si anotamos el hash de la imagen construida y ejecutamos un container basado en esa imagen, con el comando:
+    </p>
+    <span>docker run 27922b2708f1</span>
+
+    <p>Notaremos que no tenemos la salida con el contenido del archivo. La instrucción correcta en el Dockerfile para ejecutar un comando cuando se ejecuta un container es CMD y no RUN, RUN se ejecuta solo en tiempo de build. Cambiaremos el Dockerfile:</p>
+    <span>
+        FROM ubuntu
+        WORKDIR /tmp
+        COPY test.txt .
+        CMD cat test.txt
+    </span>
+    <p>Si construirmos la imagen nuevamente, la obtendremos como salida el contenido del archivo. Esto es porque CMD no ejecuta el comando, lo que hace es indicar al contenedor que ejecute ese comando cada vez que se ejecute. Al haber cambiado un paso, el hash de la imagen también cambia.</p>
+
+    <p>
+        Podemos tagear nuestra imagenes para no tener que anotar el hash:
+    </p>
+    <span>docker build -t test .</span>
+    <p>
+        Esto crea una imagen con nombre test y el tag latest (por defecto). El tag es el par <NAME>:<VERSION>, en este caso test:latest. Para ver todas nuestras imagenes ejecutamos:
+    </p>
+    <span>docker images</span>
+
+    <p>Si ahora corremos el contenedor de la imagen con:</p>
+    <span>docker run test</span>
+    <p>Veremos como salida el contenido del archivo.</p>
+
+    <p>Interactuar con el contenedor</p>
+    <p>Lo podemos hacer facilmente con el comando:</p>
+    <span>docker run -it test bash</span>
+    <p>
+        run: indica a docker que ejecute un contenedor de la imagen indicada
+    </p>
+    <p>
+        -it: indica a docker que ejecute el contenedor en modo interactivo (opuesto a -d que ejecuta el contenedor en modo daemon) y nos de una terminal virtual para interactuar. -i también se ocupa de conectar la entrada estandard al contenedor
+    </p>
+    <p>
+        test: es la imagen que hemos construido
+    </p>
+    <p>
+        bash: el comando a ejecutar una vez que inicia el contenedor
+    </p>
+
+    <p>El comando que pasamos es el que mantiene el contenedor alive. Dentro del contenedor será el proceso con PID 1 el cual será el padre de todos los siguientes procesos. Esto implica que si este proceso es terminado el contenedor se detendrá.</p>
+    <p>También notaremos que el contenido del archivo no se mostrará. Esto porque si se pasa un comando diferente, mientras se ejecuta un contenedor, el comando de la instrucción CMD será ignorado. Estamos sobrescribiendo el comando por defecto del contenedor. Para ejecutar un comando por defecto se debe usar la instrucción ENTRYPOINT en el Dockerfile.</p>
+
+    <p>Dentro del contenedor el prompt será:</p>
+    <span>root@f1e1064e0958:/tmp#</span>
+
+    <p>El directorio de trabajo será /tmp, como se estableció con WORKDIR</p>
+    <p>El usuario por defecto y el único es root. Esto debido a que los containers deben ser tratados como procesos sin estado, no como máquinas virtuales fully-functional, por ello no es necesario tener multiples usuarios. Si un contenedor es comprometido basta con apagarlo y generar otro. Algunas imágenes podrían usar diferentes usuarios pero esto es opcional.</p>
+    <p>Vemos que la imagen de ubuntu es una versión básica de la distrubición Ubuntu server. Muchos de los binarios faltarán. Por ejemplo no podemos usar el comando ping. Para ello debemos usar el package manager para instalar ping:</p>
+    <span>
+        apt update
+        apt install iputils-ping
+    </span>
+    
+    <p>Si salimos del container, usando exit e iniciamos uno nuevo. Veremos que el hostname cambia de f1e1064e0958 (el ID del viejo contenedor) a ef95ac8b41ff. Y no tendremos instalado ping.</p>
+
+    <p>Creando una imagen desde un container</p>
+    <p>El comando docker ps muestra todos containers que están ejecutándose. Para ver los cached containers (incluyendo los que fueron terminados) usamos: docker ps -a</p>
+    <p>Docker asigna un nombre a cada nuevo contenedor, en nuestro caso musing_brattain. Usaremos el estado de este conteiner cacheado como base para una nuevo imagen a la que llamaremos test2:</p>
+    <span>docker commit musing_brattain test2</span>
+    <p>La salida será un hash sha256 de la nueva imagen creada:</p>
+    <span>sha256:8b976507170c40526d1e0361631e2e959f150c8cee51fe1b9090f2a56b7e9b35</span>
+
+    <p>Nuestra nueva imagen estará ahora en la cache de Docker engine y podemos verla listando todas las imágenes: docker images</p>
+    <p>Hemos creado una nueva imagen que podemos reusar para ejecutar un container con ping preinstalado.</p>
+    <p>Alternativamente podemos iniciar el mismo contenedor varias veces. Con docker ps -a, podemos obtener el ID/name del container detenido y usar:</p>
+    <span>
+        docker start 25d285662a5a
+        docker exec -it 25d285662a5a bash
+    </span>
+    <p>Desventajas</p>
+    <p>Las desventajas de crear imágenes de esta forma en lugar de usar un Dockerfile:</p>
+    <p>La imagen es mucho más grande que un simple text file. Es más dificil de compartir.</p>
+    <p>No hay forma confiable de documentar como construiste la imagen. Equivalente a no compartir el código fuente.</p>
+
+    https://blog.hipolabs.com/understanding-docker-without-losing-your-shit-cf2b30307c63
+    https://medium.com/swlh/what-exactly-is-docker-1dd62e1fde38
+</body>
+</html>

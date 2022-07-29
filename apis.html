@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs</title>
+</head>
+<body>
+    <p>¿Qué es una API?</p>
+    <p>
+        API (Application Programming Interface). Una API es un programa que conecta una aplicación con los datos y servicios que provee otra aplicación, dandole acceso a partes específicas de un servidor. Las API's permiten la comunicación entre 2 aplicaciones y son la base para las aplicaciones más modernas. Nos permiten coordinar arquitecturas IT, automatizar marketing workflows y facilitan el compartir de datos.
+    </p>
+
+    <p>En que se diferencia REST y SOAP</p>
+    <p>
+        SOAP es un protocolo y REST es un estilo de arquitectura. Una API REST podría utilizar el protocolo SOAP así como podría usar el protocolo HTTP. Así que SOAP y REST están en paquetes distintos, funcionan diferente y se usan en escenarios diferentes.
+    </p>
+
+    <p>¿Qué es una API REST?</p>
+    <p>
+        REST (Representational State Transfer) es en verdad una API de servicios web. Las REST API's se basan en URIs y el protocolo HTTP y usan JSON para el formato de datos, el cual es compatible con navegadores. Pueden ser usadas simplemente para construir y escalar, pero también pueden ser muy grandes y complicadadas, todo depende de cómo están construidas, sobre qué están añadidas y cual es la función para la que fueron diseñadas.
+        URI: Uniform Resource Identifier, las URL's (Uniform Resource Locator) son un tipo específico de URI.
+        Algunas razones por las que quedrías construir una API RESTful son: resource limitations, pocos requerimientos de seguridad, compatibilidad con los navegadores de los clientes, detectabilidad (discoverability), data health y escalabilidad (características que se aplican a los web services)
+    </p>
+
+    <p>Información sobre REST</p>
+    <p>
+        <ul>
+            <li>REST es simple, debido a los protocolos HTTP</li>
+            <li>Las APIS REST's facilitan la comunicación cliente-servidor y entre arquitecturas. Si es RESTful, es construida sobre el principio cliente-servidor, compartiendo información de ida y vuelta.</li>
+            <li>Usan una single uniform interface, esto simplifica como las aplicaciones interactuan con la API, ya que a todas acceden a través de la misma interface.</li>
+            <li>REST está optimizado para la web, al usar JSON como formato de datos lo hace compatible con navegadores.</li>
+            <li>REST es conocido por su excelente performance y escalabilidad, pero, como otras tecnologías, puede atascarse o atascar tu app, es por eso que surgen lenguajes como GraphQL para resolver problemas que REST no puede.</li>
+        </ul>
+    </p>
+
+    <p>¿Qué es SOAP?</p>
+    <p>
+        SOAP (Simple Object Access Protocol), es un protocolo y un poco más complejo ya que define más estándares que REST (cosas como seguridad y cómo se envían los mensajes). Muchas de las razones por las que SOAP es una buena opción rara vez se aplican a los escenarios de web services, lo que lo hace más ideal para situaciones de tipo empresarial y organizaciones que requieren features más completas en términos de seguridad, transacciones y el cumplimiento de ACID (Atomicity, Consistency, Isolation, Durability).
+        Las razones por las que podrías querer desarrollar una aplicación con una API SOAP incluyen: niveles más altos de seguridad (aplicaciones móbiles que interacturan con un banco), apps de mensajería que necesitan comunicaciones confiables, comunicación con legacy systems, cumplimiento de ACID.
+    </p>
+
+    <p>Información sobre SOAP</p>
+    <p>
+        <ul>
+            <li>SOAP tiene más seguridad. Además del soporte SSL, WS-Security es un standard incorporado que le da a SOAP algo más de seguridad a nivel de empresa.</li>
+            <li>Successful/retry logic para funcionalidad confiable de comunicaciones. REST no tiene un sistema de mensajes standard y puede solo manejar errores de comunicación mediante el reintento. SOAP tiene successful/retry logic incorporado y provee end-to-end reliability incluso a través de intermediarios SOAP.</li>
+            <li>SOAP tiene incorporado ACID compliance. El cumplimiento de ACID reduce anomalías y protege la integridad de la base de datos, al prescribir como las transacciones pueden interactuar con la base de datos. ACID es más conservador que otros modelos de consistencia de datos, por lo cual es tipicamente favorecida cuando se manejan transacciones financieras o sensibles.</li>
+        </ul>
+    </p>
+
+    <p>ACID</p>
+    <p>
+        En ciencias de la computación, ACID (Atomicity, Consistency, Isolation, Durability), es un conjunto de propiedades de transacciones de base datos destinadas a garantizar la validez de los datos a pesar de errores, fallas en la energía y otros percances.
+        En el contexto de las bases de datos, una secuencia de operaciones en la base de datos que satisfacen las propiedades ACID (puede ser una única operación lógica en los datos) es llamada una trasacción. Por ejemplo, una transferencia de fondos de una cuenta a otra, incluso que involucren múltiples cambios como debitar una cuenta y acreditar la otra, es una única transacción.
+    </p>
+
+    <p>Atomicity</p>
+    <p>
+        Las transacciones se componen por lo general de múltiples sentencias. La atomicidad garantiza que cada transacción sea tratada como una única unidad, la cual puede ser exitosa por completo o fallar por completo, si alguna de las sentencias de la transacción falla en ser completada, toda la transacción falla y la base de datos queda sin cambios. Como consecuencia, no se puede observar el progreso de la transacción por otro database cliente. En un momento en el tiempo aún no ha pasado y en el siguiente ya ha ocurrido por completo o no pasó nada si la transacción fue cancelada en progreso. Atomicidad también significa indivisibilidad y irreductibilidad.
+    </p>
+
+    <p>Consistency (Correctness)</p>
+    <p>
+        Consistency se asegura que una transacción solo pueda llevar a la base de datos de un estado válido a otro estado válido, cualquier data escrita a la base de datos debe ser válida de acuerdo a todas las reglas definidas, incluyendo contraints, cascades, triggers y cualquier combinación de los mismos. Esto previene la corrupción de la base de datos por una transacción ilegal, pero no garantiza que una trasacción sea correcta.
+    </p>
+
+    <p>Isolation</p>
+    <p>
+        Las transacciones por lo general se ejecutan concurrentemente (multiples transacciones reading y writing en una tabla al mismo tiempo). Isolation se aseguran que la ejecución concurrente de transacciones dejen la base de datos en el mismo estado que se hubiera obtenido si las transacciones hubieran sido ejecutadas secuencialmente. Isolation es el objetivo principal del control de concurrencia, dependiendo del método usado, los efectos de una transacción incompleta no deben ser visibles por otras transacciones.
+    </p>
+
+    <p>Durability</p>
+    <p>
+        Garantiza que una vez que una transacción ha sido committed, permanecerá committed incluso en caso de alguna falla en el sistema (corte de energía o accidente). Esto usualmente significa que las transacciones completadas (o sus efectos) son registradas en la memoria no volátil.
+    </p>
+
+    <p>Ejemplo SOAP</p>
+    <p>
+        Usando SOAP, el request a la API es un request HTTP POST con un body XML. El body del request consiste de un envelope (sobre) es cual es un tipo de SOAP wraper que identifica la requested API y un SOAP body que contiene los parámetros del request. En este caso queremos recuperar el usuario con el nombre "Jhon". 
+    </p>
+    <p>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://www.soapexample.com/xml/users">
+            <soapenv:Header/>
+            <soapenv:Body>
+                <sch:UserDetailsRequest>
+                    <sch:name>John</sch:name>
+                </sch:UserDetailsRequest>
+            </soapenv:Body>
+        </soapenv:Envelope>
+    </p>
+    <p>
+        La respuesta al igual que es request consiste de un SOAP envelope y un SOAP body. En este caso el SOAP body representa la data requerida del usuario.
+    </p>
+    <p>
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+        <soapenv:Header/>
+        <soapenv:Body>
+            <ns2:UserDetailsResponse xmlns:ns2="http://www.soapexample.com/xml/users">
+                <ns2:User>
+                <ns2:name>John</ns2:name>
+                <ns2:age>5</ns2:age>
+                <ns2:address>Greenville</ns2:address>
+                </ns2:User
+            </ns2:UserDetailsResponse>
+        </soapenv:Body>
+        </soapenv:Envelope>
+    </p>
+
+    <p>Ejemplo REST</p>
+    <p>
+        Las APIs REST pueden ser llamadas con todos los verbos HTTP. Para obtener un recurso, en este caso, un usuario, se usa un request GET. Mientras que el request SOAP contiene el nombre del usuario en el body, una API REST acepta los parámetros GET desde la URI: GET https://restexample.com/users?name=John
+        REST APIs usan tipicamente el formato JSON:
+    </p>
+    <p>
+        {
+            "name": "John",
+            "age": 5,
+            "address": "Greenville"
+        }
+    </p>
+
+    <p>Principales diferencias entre REST y SOAP</p>
+    <ul>
+        <li>
+            SOAP es un protocolo mientras que REST es un estilo de arquitectura
+        </li>
+        <li>
+            REST APIs acceden a un recurso para obtener data (URI), SOAP APIs realizan una operación
+        </li>
+        <li>
+            REST es una arquitectura orientada a los datos, SOAP es un protocolo es más orientada a las funcionalidades.
+        </li>
+        <li>
+            REST permite diferentes data formats: XML, HTML, JSON, texto plano, SOAP solo usa XML
+        </li>
+        <li>
+            SOAP soporta WS-Security, más ideal para integración con herramientas de seguridad a nivel de empresa. Ambas soportan SSL, y REST puede usar la versión segura de HTTP (HTTPS)
+        </li>
+        <li>
+            Ambas pueden encriptar la comunicación usando HTTPS y SSL, sin embargo la capa adicional de WS-Security que tiene SOAP, actua a nivel del mensaje para asegurarse que se pueda leer el contenido de un mensaje por el servidor correcto y también por el proceso correcto en el servidor.
+        </li>
+        <li>
+            SOAP require más ancho de banda, mientras que REST requiere menores recursos
+        </li>
+        <li>
+            Las llamadas REST pueden ser cacheadas, las llamadas SOAP no. Dado que SOAP solo usa llamadas POST y estas son consideradas non-idempotent por el estandar HTTP, las respuestas no serán cacheadas a nivel HTTP. Caching es una funcionalidad clave para la performance y scalability.
+        </li>
+        <li>
+            SOAP está muy asociado con el servidor, teniendo un contrato de comunicación estricto, lo que hace que sea más dificil hacer cambios o actualizaciones.
+        </li>
+        <li>
+            Un cliente que interactua con una API REST no necesita conocimiento de la API, en cambio un cliente que interactura con una API SOAP necesita conocimiento sobre todo lo que usará antes de iniciar una interacción.
+        </li>
+    </ul>
+
+    <p>¿Qué tipo de API elegir para tu proyecto?</p>
+    <p>
+        Cuando se trata de APIs para web services, se tiende a usar una arquitectura RESTful, en cambio SOAP es una mejor opción para una app de una empresa que tiene más recursos, necesita más seguridad y tiene más requerimientos.
+    </p>
+    <p>Ventajas de elegir REST</p>
+    <ul>
+        <li>
+            Comunicación ligera, usando HTTP y payloads pequeños. Por ejemplo con el formato JSON.
+        </li>
+        <li>
+            Menores requerimientos de librerías externas en el lado del cliente.
+        </li>
+        <li>
+            Permite el uso de caching
+        </li>
+    </ul>
+
+    <p>Casos en que es mejor el uso de SOAP</p>
+    <ul>
+        <li>
+            Requerimientos de seguridad a nivel de empresa.
+        </li>
+        <li>
+            Se necesita integrar con sistemas heredados que ya usan SOAP.
+        </li>
+        <li>
+            Se requieren transacciones ACID o el uso de el mecanismo de reintentos que tiene incorporado SOAP.
+        </li>
+    </ul>
+
+    <p>HTTP verbs</p>
+    <p>
+        También llamados métodos de petición. Indican la acción que se desea realizar para un recurso determinado. 
+    </p>
+    <ul>
+        <li>
+            GET: Solicita una representación de un recurso específico. Estas peticiones solo recuperan datos.
+        </li>
+        <li>
+            HEAD: Pide una respuesta idéntica a la de una petición GET, pero sin el cuerpo de la respuesta.
+        </li>
+        <li>
+            POST: Se usa para enviar una entidad a un recurso específico, causando a menudo un cambio en el estado o efectos secundarios en el servidor.
+        </li>
+        <li>
+            PUT: Reemplaza todas las representaciones actuales del recurso del destino con la carga útil de la petición.
+        </li>
+        <li>
+            DELETE: Borra un recurso en específico.
+        </li>
+        <li>
+            CONNECT: Establece un túnel hacia el servidor identificado por el recurso.
+        </li>
+        <li>
+            OPTIONS: Utilizado para describir las opciones de comunicación para el recurso de destino.
+        </li>
+        <li>
+            TRACE: Realiza una prueba de bucle de retorno de mensaje a lo largo de la ruta al recurso de destino.
+        </li>
+        <li>
+            PATCH: Usado para aplicar modificaciones parciales a un recurso.
+        </li>
+    </ul>
+
+    <p>Referencia: https://www.upwork.com/resources/soap-vs-rest-a-look-at-two-different-api-styles</p>
+</body>
+</html>
