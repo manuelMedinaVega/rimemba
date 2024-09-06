@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap" rel="stylesheet">
+    <style>
+        /*En el selector universal especificamos la familia de fuente por defecto para todas las cajas. 
+        Para buscar fuentes especiales podemos hacerlo en google.com/fonts.
+        No se recomienda tener muchas tipografías en un sitio web.
+        Se usan tipografías especiales para logotipos por ejemplo*/
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: sans-serif;
+        }
+
+        header{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 120px; /* los tamaños de width y height se obtienen del maquetado */
+        }
+
+        #logo{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 200px;
+            height: 60px;
+            font-family: 'Mouse Memoirs', sans-serif;
+            font-size: 50px; /*tamaño del texto*/
+            text-align: center; /*ubica al texto dentro de la caja al centro*/
+            line-height: 60px; /*alinea a nivel vertical, con el mismo tamaño del heigh lo ubica a la mitad*/
+        }
+
+        .redes{
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 100%;
+            text-align: center;
+            line-height: 42px;
+            color: white; /*define el color del texto*/
+        }
+
+        #icono1{
+            top: 42px;
+            right: 120px;
+            background-color: blue;
+        }
+
+        #icono2{
+            top: 42px;
+            right: 71px;
+            background: green;
+        }
+
+        #icono3{
+            top: 42px;
+            right: 19px;
+            background: red;
+        }
+
+        nav{
+            position: relative;
+            margin: auto;
+            width: 1000px;
+            height: 48px;
+        }
+
+        .botones{
+            float: left;
+            width: 196px;
+            height: 48px;
+            background: rgba(100, 0, 255, 1);
+            margin: 0px 2px;
+            font-family: 'Mouse Memoirs', sans-serif;
+            text-align: center;
+            line-height: 48px;
+            color: white;
+        }
+
+        #top{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 192px;
+        }
+
+        #top ul{
+            width: 1010px;
+            height: 192px;
+        }
+
+        #top ul li{
+            float: left;
+            width: 326px;
+            height: 192px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        #top ul li img{
+            border-radius: 100%;
+            height: 100px;
+        }
+
+        #top ul li h1{
+            font-family: 'Mouse Memoirs', sans-serif;
+        }
+
+        #top ul li p{
+            font-size: 14px;
+            margin: 10px;
+        }
+
+        section{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 453px;
+        }
+
+        aside#izq{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 453px;
+            background: #aaa;
+        }
+
+        article{
+            position: absolute;
+            left: 200px;
+            top: 0;
+            width: 600px;
+            height: 453px;
+        }
+
+        article h1{
+            font-family: 'Mouse Memoirs', sans-serif;
+            font-size: 40px;
+            margin: 20px;
+        }
+
+        article p img{
+            float: left;
+            margin-right: 20px;
+        }
+
+        article p{
+            margin: 5px 20px;
+            font-size: 14px;
+            text-align: justify;
+        }
+
+        aside#der{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 453px;
+            background: #aaa;
+        }
+
+        footer{
+            position: relative;
+            margin: 20px auto;
+            width: 1000px;
+            height: 70px;
+            background: rgba(100, 0, 255, 1);
+            text-align: center;
+            line-height: 70px;
+            color: white;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">LOGOTIPO</div>
+
+        <div id="icono1" class="redes">X</div>
+        <div id="icono2" class="redes">X</div>
+        <div id="icono3" class="redes">X</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="botones">Botón 1</li>
+            <li class="botones">Botón 2</li>
+            <li class="botones">Botón 3</li>
+            <li class="botones">Botón 4</li>
+            <li class="botones">Botón 5</li>
+        </ul>
+    </nav>
+
+    <div id="top">
+        <ul>
+            <li>
+                <img src="img1.jpg" width="100">
+                <h1>Lorem ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </li>
+
+            <li>
+                <img src="img2.jpg" width="100">
+                <h1>Lorem ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </li>
+
+            <li>
+                <img src="img3.jpg" width="100">
+                <h1>Lorem ipsum</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </li>
+        </ul>
+    </div>
+
+    <section>
+        <aside id="izq"></aside>
+
+        <article>
+            <h1>Lorem ipsum</h1>
+            <p>
+                <img src="img4.jpg" width="250">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                Veniam deleniti illum qui? Atque, autem eligendi minus ducimus non alias? Officia 
+                voluptatibus repellendus, reiciendis molestias aliquid sequi voluptatum in veniam 
+                laudantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi aspernatur 
+                molestiae quasi vitae sapiente. Quo sit blanditiis reiciendis sapiente. Quibusdam dicta 
+                temporibus dolorum cum ad repellat! Suscipit eaque quas sunt!
+            </p>
+            <br>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quas aut consequatur 
+                velit rem voluptatum modi ipsum! Tenetur dolor tempora reiciendis! Corporis odio 
+                consequuntur ipsam, ea eveniet libero cumque. Alias!
+            </p>
+        </article>
+
+        <aside id="der"></aside>
+    </section>
+
+    <footer>
+        &copy; Derechos reservados
+    </footer>
+</body>
+</html>

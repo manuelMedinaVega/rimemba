@@ -36,12 +36,61 @@
             background: #555; /* escala de grises */
         }
 
+        /*como logo es una caja interna dentro de header, ya no vamos a usar la position: relative
+        sino position:absolute, esta permite colocar una caja interna dentro de una principal, permite
+        manejar las coordenadas: top, left, bottom y right, y colocarla de acuerdo a estas. Solo 
+        pueden estar 2*/
+        #logo{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 200px;
+            height: 60px;
+            background: #ccc;
+        }
+
+        /*border-radius: 100%; convierte en círculo*/
+        .redes{
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            background: #ccc;
+            border-radius: 100%;
+        }
+
+        #icono1{
+            top: 42px;
+            right: 120px;
+        }
+
+        #icono2{
+            top: 42px;
+            right: 71px;
+        }
+
+        #icono3{
+            top: 42px;
+            right: 19px;
+        }
+
         nav{
             position: relative;
             margin: auto;
             width: 1000px;
             height: 48px; /* los tamaños de width y height se obtienen del maquetado */
-            background: #aaa; /* escala de grises */
+        }
+
+        /*hace flotar el listado, que ahora está en vertical, lo hace flotar a nivel horizontal, 
+        para que inicie de izquierda a derecha sería: float:left
+        el width es 200, ya que son 5 botones y el nav tiene width 1000
+        como con margin estamos quitando 2px al lado izquierdo y 2 px al lado derecho, disminuimos
+        el width a 196*/
+        .botones{
+            float: left;
+            width: 196px;
+            height: 48px;
+            background: #333;
+            margin: 0px 2px;
         }
 
         #top{
@@ -49,7 +98,20 @@
             margin: 20px auto;
             width: 1000px;
             height: 192px; /* los tamaños de width y height se obtienen del maquetado */
-            background: #888; /* escala de grises */
+        }
+
+        /*tenemos que agrandar la caja ul que contiene a los 3 items, para como quitar el margin-right de la última caja*/
+        #top ul{
+            width: 1010px;
+            height: 192px;
+        }
+
+        #top ul li{
+            float: left;
+            width: 326px; /*el width de top es 1000 y son 3 li, lo seteamos con el inspector, ya que si lo dejamos en 333 y además el margin entonces pasa una caja al siguiente renglon*/
+            height: 192px;
+            margin-right: 10px; /*este agrega un margin de 10 a la derecha*/
+            background: black;
         }
 
         section{
@@ -60,6 +122,33 @@
             background: #888; /* escala de grises */
         }
 
+        aside#izq{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 453px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #aaa; /* escala de grises */
+        }
+
+        article{
+            position: absolute;
+            left: 200px;
+            top: 0;
+            width: 600px;
+            height: 453px;
+            background: #666;
+        }
+
+        aside#der{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 200px;
+            height: 453px; /* los tamaños de width y height se obtienen del maquetado */
+            background: #aaa; /* escala de grises */
+        }
+
         footer{
             position: relative;
             margin: 20px auto;
@@ -67,6 +156,8 @@
             height: 70px; /* los tamaños de width y height se obtienen del maquetado */
             background: #888; /* escala de grises */
         }
+
+        
     </style>
 </head>
 
@@ -74,9 +165,9 @@
     <header>
         <div id="logo"></div>
 
-        <div id="icono1"></div>
-        <div id="icono2"></div>
-        <div id="icono3"></div>
+        <div id="icono1" class="redes"></div>
+        <div id="icono2" class="redes"></div>
+        <div id="icono3" class="redes"></div>
     </header>
 
     <nav>

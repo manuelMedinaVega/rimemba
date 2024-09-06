@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Manu Medi">
+	<meta name="description" content="Curso Responsive">
+	<meta name="keywords" content="curso, responsive, html, web, css">
+
+	<title>Diseño web responsive</title>
+
+	<link rel="icon" href="img/img1.jpg">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+	<!--Se recomienda que para empezar a maquetar un sitio web responsive, primero se haga en html
+	la estructura de las filas, todo dentro de una etiqueta div principal como contenedor-->
+	<div class="contenedor">
+		
+		<!--para la cabecera-->
+		<header class="fila">
+			<!--podemos separar la cabecera en 3 columnas: 1 para el logo, 1 para un espacio en blanco
+			separador y 1 para los botones de redes sociales.
+			Luego vamos colocando las clases de tamaño dependiendo del dispositivo: 
+				para desktop y para tablet dejamos la misma proporción 2-8-2 
+				para small devices (tablet vertical, movil horizontal) cambia la proporción a 3-6-3 
+				para extra small (movil vertical) hacemos que todas estén centradas al 100% 12-12-12, 
+				pero queda el especio de la segunda columna vacía: para esto agregamos col-xs-0 
+				que le pone el display none -->
+			<div id="logo" class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+				Logotipo
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-0"></div>
+			<!--Dentro del siguiente div habrá 3 columnas: 1 para cada botón de redes sociales-->
+			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					<center id="icono1"><p>X</p></center>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					<center id="icono2"><p>X</p></center>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					<center id="icono3"><p>X</p></center>
+				</div>
+			</div>
+		</header> 
+
+		<!--para los botones-->
+		<nav class="fila">
+			<ul>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 1</a></li>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 2</a></li>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 3</a></li>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 4</a></li>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 5</a></li>
+				<li class="col-lg-2 col-md-2 col-sm-6 col-xs-12"><a href="#">Botón 6</a></li>
+			</ul>
+		</nav> 
+
+		<!--primera sección con 3 botones|columnas-->
+		<section id="seccion3" class="fila">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<center>
+					<img src="img/img1.jpg">
+					<h1>Lorem Ipsum</h1>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+				</center>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<center>
+					<img src="img/img2.jpg">
+					<h1>Lorem Ipsum</h1>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+				</center>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+				<center>
+					<img src="img/img2.jpg">
+					<h1>Lorem Ipsum</h1>
+					<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+				</center>
+			</div>
+		</section>
+
+		<!--segunda sección con 3 columnas-->
+		<section id="seccion4" class="fila">
+			<aside id="izq" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<ul>
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+					<li><a href="#">Link 4</a></li>
+				</ul>
+			</aside>
+
+			<article class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<h1>Lorem ipsum</h1>
+				<p>
+					<img src="img/img4.jpg" width="250">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+					Veniam deleniti illum qui? Atque, autem eligendi minus ducimus non alias? Officia 
+					voluptatibus repellendus, reiciendis molestias aliquid sequi voluptatum in veniam 
+					laudantium. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi aspernatur 
+					molestiae quasi vitae sapiente. Quo sit blanditiis reiciendis sapiente. Quibusdam dicta 
+					temporibus dolorum cum ad repellat! Suscipit eaque quas sunt!
+				</p>
+				<br>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quas aut consequatur 
+					velit rem voluptatum modi ipsum! Tenetur dolor tempora reiciendis! Corporis odio 
+					consequuntur ipsam, ea eveniet libero cumque. Alias!
+				</p>
+			</article>
+
+			<aside id="der" class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+				<h1>Ingreso</h1>
+	
+				<form>
+					<input type="text" placeholder="Usuario">
+					<input type="password" placeholder="Contraseña">
+					<input type="submit" value="Enviar">
+				</form>
+	
+			</aside>
+		</section>
+
+		<!--para la sección del footer-->
+		<footer class="fila">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&copy; Derechos reservados</div>
+		</footer>
+	</div>
+</body>
+</html>

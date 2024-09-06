@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    background: url(../img/index.jpg);
+    background-position: top center;
+    height: 1080px;
+}
+
+header{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 83px; /*lo sacamos del diseño*/
+    background: rgba(255, 255, 0, 0.5); /*temporal para visualización*/
+}
+
+#logo{
+    position: absolute;
+    top: 17px; /*estos valores se obtienen desde el inspector, moviendo la caja manualmente*/
+    left: 15px;
+    width: 188px;
+    height: 47px;
+    background: rgba(0, 0, 255, 0.5);
+}
+
+nav{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 45px;
+    background: rgba(255, 0, 0, 0.5);
+}
+
+nav ul{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 500px;
+    height: 45px;
+    background: rgba(0, 255, 0, 0.5);
+}
+
+nav ul li{
+    float: left; /*para que floten de izquierda a derecha*/
+    width: 125px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background: rgba(0, 0, 255, 0.5);
+}
+
+#slide{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 301px;
+    background: rgba(0, 0, 255, 0.5);
+}
+
+#botoneraSlide{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 26px;
+    background: rgba(70, 255, 0, 0.5);
+}
+
+section{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 299px;
+    background: rgba(0, 255, 0, 0.5);
+}
+
+#bottom{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 190px;
+    background: rgba(0, 0, 255, 0.5);
+}
+
+footer{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 62px;
+    background: rgba(255, 5, 0, 0.5);
+}

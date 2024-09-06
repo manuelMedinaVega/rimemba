@@ -1,0 +1,243 @@
+/*En el selector universal especificamos la familia de fuente por defecto para todas las cajas. 
+Para buscar fuentes especiales podemos hacerlo en google.com/fonts.
+No se recomienda tener muchas tipografías en un sitio web.
+Se usan tipografías especiales para logotipos por ejemplo*/
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: sans-serif;
+}
+
+#chat{
+    position: fixed; /*el valor fixed permite tomar una caja y pegarla a la pantalla*/
+    width: 250px;
+    height: 40px;
+    bottom: 0;
+    right: 20px; /*para moverla a la parte inferior, sin embargo el footer la tapa, para ello usamos la propiedad z-index*/
+    background: magenta;
+    z-index: 1;/*permite manipular la profundidad de las cajas, por defecto todas tienen índice 0*/
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 20px;
+    border-radius: 20px 20px 0 0; /*agrega bordes redondeados solo a las puntas superiores*/
+    cursor: pointer; /*para que parezca botón*/
+}
+
+header{
+    position: relative;
+    margin: 20px auto;
+    width: 1000px;
+    height: 120px; /* los tamaños de width y height se obtienen del maquetado */
+}
+
+#logo{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 200px;
+    height: 60px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 50px; /*tamaño del texto*/
+    text-align: center; /*ubica al texto dentro de la caja al centro*/
+    line-height: 60px; /*alinea a nivel vertical, con el mismo tamaño del heigh lo ubica a la mitad*/
+}
+
+.redes{
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 42px;
+    color: white; /*define el color del texto*/
+}
+
+#icono1{
+    top: 42px;
+    right: 120px;
+    background-color: blue;
+}
+
+#icono2{
+    top: 42px;
+    right: 71px;
+    background: green;
+}
+
+#icono3{
+    top: 42px;
+    right: 19px;
+    background: red;
+}
+
+nav{
+    position: relative;
+    margin: auto;
+    width: 1000px;
+    height: 48px;
+}
+
+.botones{
+    float: left;
+    width: 196px;
+    height: 48px;
+    background: rgba(100, 0, 255, 1);
+    margin: 0px 2px;
+    font-family: 'Mouse Memoirs', sans-serif;
+    text-align: center;
+    line-height: 48px;
+    color: white;
+}
+
+a .botones:hover{ /*hover es una pseudoclase para especificar algo cuando se haga hover*/
+    background: rgba(100, 0, 255, 0.4);
+}
+
+a .botones:active{ /*para cuando haya hecho clic*/
+    background: rgba(255, 0, 100, 1);
+}
+
+#top{
+    position: relative;
+    margin: 20px auto;
+    width: 1000px;
+    height: 192px;
+}
+
+#top ul{
+    width: 1010px;
+    height: 192px;
+}
+
+#top ul li{
+    float: left;
+    width: 326px;
+    height: 192px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+#top ul li img{
+    border-radius: 100%;
+    height: 100px;
+}
+
+#top ul li h1{
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+#top ul li p{
+    font-size: 14px;
+    margin: 10px;
+}
+
+section{
+    position: relative;
+    margin: 20px auto;
+    width: 1000px;
+    height: 453px;
+}
+
+aside#izq{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 453px;
+}
+
+aside#izq ul li{
+    background: #aaa;
+    padding: 10px;
+    margin: 2px 10px;
+    list-style: square;
+    list-style-position: inside; /*posicion de los items de la lista esté inside*/
+    /*list-style-image: url('iconolista.jpg'); para agregar un ícono personalizado a la lista*/
+}
+
+aside#izq ul li a{
+    text-decoration: none; /*para que no aparezca subrayado el enlace*/
+}
+
+article{
+    position: absolute;
+    left: 200px;
+    top: 0;
+    width: 600px;
+    height: 453px;
+}
+
+article h1{
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: 40px;
+    margin: 20px;
+}
+
+article p img{
+    float: left;
+    margin-right: 20px;
+}
+
+article p{
+    margin: 5px 20px;
+    font-size: 14px;
+    text-align: justify;
+}
+
+aside#der{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 200px;
+    height: 453px;
+}
+
+aside#der h1{
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: rgba(100, 0, 255, 1);
+    color: white;
+    margin-bottom: 5px;
+}
+
+aside#der input{
+    padding: 10px;
+    margin: 5px 0;
+    width: 176px; /*se define con el inspector*/
+}
+
+aside#der input[type="text"]{ /*selecciona un elemento input pero cuyo atributo type sea text*/
+    background: url('img1.jpg'); /*debería ir un ícono pequeño para el input*/
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+aside#der input[type="password"]{ /*selecciona un elemento input pero cuyo atributo type sea password*/
+    background: url('img2.jpg'); /*debería ir un ícono pequeño para el input*/
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+aside#der input[type="submit"]{
+    width: 200px;
+    background: rgba(100, 0, 100, 0.5);
+    border: 0;
+}
+
+footer{
+    position: relative;
+    margin: 20px auto;
+    width: 1000px;
+    height: 70px;
+    background: rgba(100, 0, 255, 1);
+    text-align: center;
+    line-height: 70px;
+    color: white;
+}

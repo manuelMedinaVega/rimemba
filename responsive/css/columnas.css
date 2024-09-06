@@ -1,0 +1,88 @@
+/* Estilos globales  */
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-emphasis: none;
+	font-family: sans-serif;
+	box-sizing: border-box; /*esto asegura que el relleno y el borde están incluidos en el ancho
+	y alto total de los elementos*/
+}
+
+.contenedor{
+	position: relative;
+	margin: auto; /*esto para que se centre*/
+	width: 100%;
+	height: auto; /*el alto se va adaptando a lo que está dentro del contenedor*/
+}
+
+/*dentro del contenedor irá la clase fila, con los mismos estilos del contenedor*/
+.fila{
+	position: relative;
+	margin: auto; /*esto para que se centre*/
+	width: 100%;
+	height: auto;
+	/*Las columnas dentro de una fila están flotando a la izquierda, y por lo tanto se toman fuera del 
+	flujo de la página y otros elementos serán colocados como si no fueran de las columnas. Para evitar
+	esto vamos a añadir un estilo que despeja el flujo:*/
+	clear: both; /*respeta las cajas flotantes solo dentro de la fila*/
+	display: table; /*respeta el area que genera las cajas flotantes y genera altura en el flujo de nodos
+	permitiendo agregar color a la fila*/
+}
+
+[class*="col-"]{ /*selecciono todos los elementos que tengan una clase que comience con col-*/
+	float: left; /*para que las cajas se ubiquen de izquierda a derecha, una al lado de la otra*/
+	border: 1px solid black; /*este borde agrega 1px a las cajas, por lo que la segunda 
+	caja pasa al siguiente renglon, para solucionar esto agregamos la propieda global, box-sizing*/
+	padding: 20px; /*hace que la caja se vea un poco más grande*/
+}
+
+/*creamos una clase para cuando una caja necesite ocupar las 12 columnas*/
+.col-12{
+	width: 100%;
+}
+
+.col-11{
+	width: 91.66666667%;
+}
+
+.col-10{
+	width: 83.33333333%;
+}
+
+.col-9{
+	width: 75%;
+}
+
+.col-8{
+	width: 66.66666667%;
+}
+
+.col-7{
+	width: 58.33333333%;
+}
+
+.col-6{
+	width: 50%;
+}
+
+.col-5{
+	width: 41.66666667%;
+}
+
+.col-4{
+	width: 33.33333333%; /*bootstrap recomienda poner 8 decimales*/
+}
+
+.col-3{
+	width: 25%;
+}
+
+.col-2{
+	width: 16.66666667%;
+}
+
+.col-1{
+	width: 8.33333333%;
+}
+
